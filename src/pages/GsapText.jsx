@@ -1,5 +1,39 @@
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
 const GsapText = () => {
   // TODO: Implement gsap text animation
+  useGSAP(() => {
+    gsap.to("#text", {
+      opacity: 1,
+      y: 0,
+      duration: 1,
+      delay: 1,
+      ease: "power2.inOut",
+      repeat: -1, // Repeat forever
+      yoyo: true, // Reverse the animation after each cycle
+    });
+
+    gsap.fromTo(
+      ".para",
+      {
+        opacity: 0,
+        y: 20,
+        duration: 1,
+        ease: "power2.inOut",
+      },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        ease: "power2.inOut",
+        repeat: -1, // Repeat forever
+        yoyo: true, // Reverse the animation after each cycle
+        delay: 1, // Delay the animation by 3 seconds
+        stagger: 0.5, // Stagger - it means the animation will start at the end of the previous animation and continue to the start of the next animation after the specified duration.
+        // Stagger the animation over a period of 0.5 seconds
+      }
+    );
+  })
 
   return (
     <main>
